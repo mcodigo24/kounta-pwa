@@ -1,26 +1,72 @@
 @import "tailwindcss";
 
+/* Paleta Kounta — claymorfismo oscuro, cálido (ámbar/durazno) */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --kounta-primary: #f0b27a;
+  --kounta-secondary: #e8a56c;
+  --kounta-background: #3d3128;
+  --kounta-text: #f5e6d8;
+  --kounta-text-strong: #fbf3ea;
+  --kounta-text-muted: #b8a493;
+  --kounta-surface: #45382e;
+  --kounta-nav: #2e241d;
+  --kounta-surface-variant: #4e3e32;
+  --kounta-surface-empty: #6e5847;
+  --kounta-border: rgb(240 178 122 / 0.2);
+  --kounta-border-focus: rgb(240 178 122 / 0.6);
+  --kounta-lost: #f08a8a;
+  --kounta-lost-container: #3a2626;
+  --kounta-win-container: #3a2e22;
+  --kounta-on-accent: #241e1a;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-primary: var(--kounta-primary);
+  --color-secondary: var(--kounta-secondary);
+  --color-background: var(--kounta-background);
+  --color-text: var(--kounta-text);
+  --color-strong: var(--kounta-text-strong);
+  --color-muted: var(--kounta-text-muted);
+  --color-surface: var(--kounta-surface);
+  --color-nav: var(--kounta-nav);
+  --color-variant: var(--kounta-surface-variant);
+  --color-empty: var(--kounta-surface-empty);
+  --color-line: var(--kounta-border);
+  --color-line-focus: var(--kounta-border-focus);
+  --color-lost: var(--kounta-lost);
+  --color-lost-container: var(--kounta-lost-container);
+  --color-win-container: var(--kounta-win-container);
+  --color-on-accent: var(--kounta-on-accent);
+  --radius-clay: 24px;
+  --radius-clay-sm: 18px;
+  --font-sans: var(--font-geist-sans), system-ui, sans-serif;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
+html,
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  height: 100%;
+  background: var(--kounta-background);
+  color: var(--kounta-text-strong);
+  font-family: var(--font-sans);
+  -webkit-tap-highlight-color: transparent;
+  overscroll-behavior: none;
+}
+
+/* Claymorfismo: sombra oscura abajo-derecha + luz sutil arriba-izquierda. e = elevación en px. */
+.clay {
+  --e: 8px;
+  box-shadow:
+    calc(var(--e) * 0.5) calc(var(--e) * 0.5) calc(var(--e) * 1.6) rgb(0 0 0 / 0.45),
+    calc(var(--e) * -0.5) calc(var(--e) * -0.5) calc(var(--e) * 1.6) rgb(255 255 255 / 0.05);
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+}
+
+button:focus-visible,
+a:focus-visible {
+  outline: 2px solid var(--kounta-border-focus);
+  outline-offset: 2px;
 }
